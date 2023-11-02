@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phase-3 backend week1&2</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+    <script defer src="/JS/index.js"></script>
+</head>
+
+<body>
+    <form action="/upload" class="upload" method="POST" id="uploadForm" enctype="multipart/form-data"
+        onsubmit="return checkUpload()">
+        <label>發表一篇圖文</label>
+        <label>選擇圖片:</label>
+        <input type="file" id="fileUpload" name="file" accept="image/*" required>
+        <label>文字內容:</label>
+        <input type="text" id="message" name="message" required>
+        <button type="submit" id="btn">發佈</button>
+    </form>
+    {% for item in data %}
+    <form action="/delete" method="POST" onsubmit="return deleteImg()">
+        <span>{{item.message}}</span>
+        <img src="{{item.url}}" width="200" height="200">
+        <input type="hidden" name="url" value="{{item.url}}">
+        <button>刪除圖片</button>
+    </form>
+    {% endfor %}
+</body>
+
+</html>
