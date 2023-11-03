@@ -2,7 +2,6 @@ from flask import *
 import boto3
 from App.AWS import Aws
 from App.mysqlPool import Mysql
-import atexit
 import uuid
 
 app = Flask(__name__, static_folder="static", static_url_path="/",template_folder="templates")
@@ -111,6 +110,11 @@ def delete():
         return make_response(f'Error: {str(e)}')
     
     return redirect("/")
+
+@app.route("/loaderio-06991c412126391d7737a8f597bcefd5/")
+def verify():
+    data = "loaderio-06991c412126391d7737a8f597bcefd5"
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.json.ensure_ascii = False
